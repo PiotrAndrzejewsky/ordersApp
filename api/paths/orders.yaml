@@ -1,0 +1,14 @@
+summary: Operations on orders
+
+post:
+    operationId: Create new order
+    tags:
+        - Orders
+    description: Creates a new order
+    requestBody:
+        $ref: "../requestBodies/OrderRequestBody.yaml"
+    responses:
+        '200':
+            description: Created new order successfully
+        default:
+            $ref: "../responses/ApiErrorResponse.yaml"

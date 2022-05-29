@@ -1,0 +1,19 @@
+ApiError:
+    $ref: "./entities/ApiError.yaml"
+
+Order:
+    $ref: "./entities/Order.yaml"
+
+User:
+    $ref: "./entities/User.yaml"
+
+
+
+OrderForm:
+    $ref: "./forms/OrderForm.yaml"
+
+UserForm:
+    $ref: "./forms/UserForm.yaml"
+
+OrderUpdateForm:
+    $ref: "./forms/OrderUpdateForm.yaml"

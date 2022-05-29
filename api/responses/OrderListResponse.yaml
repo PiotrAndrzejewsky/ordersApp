@@ -1,0 +1,7 @@
+description: contains a list of orders
+content:
+    application/json:
+        schema:
+            type: array
+            items:
+                $ref: "../schemas/entities/Order.yaml"

@@ -1,0 +1,18 @@
+properties:
+
+    description:
+        type: string
+
+    price:
+        type: number
+        min: 0
+
+    plannedCompletionDate:
+        type: date
+
+    completed:
+        type: boolean
+
+required:
+    - description
+    - price

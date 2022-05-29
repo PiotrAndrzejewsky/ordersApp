@@ -1,0 +1,14 @@
+summary: Operations on users
+
+post:
+    operationId: createNewUser
+    tags:
+        - Users
+    description: Creates new user
+    requestBody:
+        $ref: "../requestBodies/UserRequestBody.yaml"
+    response:
+        '200':
+            description: Created new user successfully
+        default:
+            $ref: "../responses/ApiErrorResponse.yaml"

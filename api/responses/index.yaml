@@ -1,0 +1,11 @@
+ApiErrorResponse:
+    $ref: "./ApiErrorResponse.yaml"
+
+OrderResponse:
+    $ref: "./OrderResponse.yaml"
+
+OrderListResponse:
+    $ref: "./OrderListResponse.yaml"
+
+UserResponse:
+    $ref: "./UserResponse.yaml"

@@ -1,0 +1,24 @@
+summary: operations on user's orders
+
+parameters:
+
+    - name: userId
+      in: path
+      required: true
+      schema:
+          type: number
+          min: 0
+
+get:
+    operationId: GetAllOrdersByUserId
+    tags:
+        - Orders
+    descritpion: Returns an array of orders
+    responses:
+        '200':
+            $ref: "../responses/OrderListResponse.yaml"
+
+        default:
+            $ref: "../responses/ApiErrorResponse.yaml"
+
+

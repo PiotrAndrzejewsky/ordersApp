@@ -1,0 +1,5 @@
+description: contains an api error
+content:
+    application/json:
+        schema:
+            $ref: "../schemas/entities/ApiError.yaml"
