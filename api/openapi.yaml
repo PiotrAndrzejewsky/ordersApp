@@ -8,6 +8,7 @@ info:
 tags:
     - name: Users
     - name: Orders
+    - name: Login
 
 components:
     schemas:
@@ -26,12 +27,16 @@ paths:
     /order/{orderId}:
         $ref: "./paths/order.yaml"
 
-    /users:
-        $ref: "./paths/users.yaml"
 
     /user/{userId}:
         $ref: "./paths/user.yaml"
 
     /user/{userId}/orders:
         $ref: "./paths/users_orders.yaml"
+
+    /login:
+        $ref: "./paths/login.yaml"
+
+    /signUp:
+        $ref: "./paths/signUp.yaml"
 
