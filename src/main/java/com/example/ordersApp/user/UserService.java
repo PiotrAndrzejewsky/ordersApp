@@ -2,6 +2,7 @@ package com.example.ordersApp.user;
 
 import com.example.ordersApp.exceptions.UserDoesNotExistException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,6 @@ public class UserService {
 
     @Autowired
     private UserRepository mUserRepository;
-    private PasswordEncoder mPasswordEncoder;
 
     public UserService(UserRepository userRepository) { this.mUserRepository = userRepository; }
 
@@ -29,7 +29,7 @@ public class UserService {
     }
 
     public void addNewUser(UserEntity userEntity) {
-        String password = mPasswordEncoder.encode(userEntity.getPassword());
+        String password = new BCryptPasswordEncoder().encode(userEntity.getPassword());
         userEntity.setPassword(password);
         mUserRepository.save(userEntity); }
 }
