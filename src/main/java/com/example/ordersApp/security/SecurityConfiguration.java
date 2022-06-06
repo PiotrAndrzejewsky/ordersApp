@@ -41,6 +41,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/login").permitAll()
                 .anyRequest().authenticated();
+        http.cors();
     }
 
     @Override
