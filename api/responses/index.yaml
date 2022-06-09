@@ -9,3 +9,6 @@ OrderListResponse:
 
 UserResponse:
     $ref: "./UserResponse.yaml"
+
+LoginResponse.yaml:
+    $ref: "./LoginResponse.yaml"

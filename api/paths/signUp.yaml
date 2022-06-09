@@ -4,7 +4,7 @@ post:
   operationId: createNewUser
   tags:
     - Login
-  description: logins user
+  description: Creates user
   requestBody:
     $ref: "../requestBodies/UserRequestBody.yaml"
   response:

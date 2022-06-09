@@ -9,18 +9,6 @@ parameters:
           type: number
           min: 0
 
-
-get:
-    operationId: getOrderById
-    tags:
-        - Orders
-    description: Returns an order with specific id or an error where there isn't any order with that id
-    responses:
-        '200':
-            $ref: "../responses/OrderResponse.yaml"
-        default:
-            $ref: "../responses/ApiErrorResponse.yaml"
-
 delete:
     operationId: deleteOrderById
     tags:

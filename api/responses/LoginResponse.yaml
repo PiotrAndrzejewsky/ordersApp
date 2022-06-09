@@ -1,0 +1,6 @@
+description: contains a user id
+content:
+  application/json:
+    schema:
+      type: number
+      min: 0

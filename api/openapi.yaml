@@ -20,10 +20,10 @@ components:
         $ref: "./requestBodies/index.yaml"
 
 paths:
-    /orders/{userId}:
+    /orders:
         $ref: "./paths/orders.yaml"
 
-    /order/{orderId}:
+    /orders/{orderId}:
         $ref: "./paths/order.yaml"
 
     /login:
@@ -32,10 +32,10 @@ paths:
     /signUp:
         $ref: "./paths/signUp.yaml"
 
-    /orders/week/{date-userId}:
+    /orders/week/{userId}?date={date}:
         $ref: "./paths/orders_date_week.yaml"
 
-    /orders/day/{date-userId}:
+    /orders/day/{userId}?date={date}:
         $ref: "./paths/orders_date_day.yaml"
 
 

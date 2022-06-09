@@ -2,13 +2,21 @@ summary: operations on orders by date
 
 parameters:
 
-  - name: date-userId
+  - name: userId
+    in: path
+    required: true
+    schema:
+      type: number
+      min: 0
+
+  - name: date
     in: path
     required: true
     schema:
       type: string
-      format: "DD-MM-YYYY-ID"
-      example: "09-06-2022-103"
+      format: date
+      example: "2022-06-19"
+
 
 get:
   operationId: GetAllOrdersByDate
