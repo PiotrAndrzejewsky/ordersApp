@@ -1,5 +1,15 @@
 summary: login user
 
+parameters:
+
+  - name: userId
+    in: path
+    required: true
+    schema:
+      type: number
+      min: 0
+
+
 post:
   operationId: login
   tags:

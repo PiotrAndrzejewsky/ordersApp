@@ -1,5 +1,8 @@
 properties:
 
+    title:
+        type: string
+
     description:
         type: string
 
@@ -7,5 +10,15 @@ properties:
         type: number
         min: 0
 
+    client:
+        type: string
+
+    quantity:
+        type: number
+        min: 1
+
     plannedCompletionDate:
         type: date
+
+    completed:
+        type: boolean

@@ -3,9 +3,12 @@ properties:
         type: number
         min: 0
 
-    usersId:
+    userId:
         type: number
         min: 0
+
+    title:
+        type: string
 
     description:
         type: string
@@ -13,6 +16,13 @@ properties:
     price:
         type: number
         min: 0
+
+    client:
+        type: string
+
+    quantity:
+        type: number
+        min: 1
 
     plannedCompletionDate:
         type: date
