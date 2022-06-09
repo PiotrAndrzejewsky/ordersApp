@@ -1,0 +1,31 @@
+properties:
+
+    title:
+        type: string
+
+    description:
+        type: string
+
+    price:
+        type: number
+        min: 0
+
+    client:
+        type: string
+
+    plannedCompletionDate:
+        type: date
+
+    quantity:
+        type: number
+        min: 1
+
+    completed:
+        type: boolean
+
+required:
+    - title
+    - price
+    - client
+    - plannedCompletionDate
+    - quantity

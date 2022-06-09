@@ -1,0 +1,41 @@
+openapi: "3.0.3"
+
+info:
+    version: 0.1.0
+    title: ordersApp
+    description: App that enables you to work with your orders
+
+tags:
+    - name: Orders
+    - name: Login
+
+components:
+    schemas:
+        $ref: "./schemas/index.yaml"
+
+    responses:
+        $ref: "./responses/index.yaml"
+
+    requestBodies:
+        $ref: "./requestBodies/index.yaml"
+
+paths:
+    /orders:
+        $ref: "./paths/orders.yaml"
+
+    /orders/{orderId}:
+        $ref: "./paths/order.yaml"
+
+    /login:
+        $ref: "./paths/login.yaml"
+
+    /signUp:
+        $ref: "./paths/signUp.yaml"
+
+    /orders/week/{userId}?date={date}:
+        $ref: "./paths/orders_date_week.yaml"
+
+    /orders/day/{userId}?date={date}:
+        $ref: "./paths/orders_date_day.yaml"
+
+
