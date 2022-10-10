@@ -5,6 +5,9 @@ info:
     title: ordersApp
     description: App that enables you to work with your orders
 
+servers:
+  - url: http://localhost:8080
+
 tags:
     - name: Orders
     - name: Login
@@ -37,5 +40,8 @@ paths:
 
     /orders/day/{userId}?date={date}:
         $ref: "./paths/orders_date_day.yaml"
+
+    /refresh:
+        $ref: "./paths/refresh_token.yaml"
 
 

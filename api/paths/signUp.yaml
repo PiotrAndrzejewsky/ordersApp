@@ -7,7 +7,7 @@ post:
   description: Creates user
   requestBody:
     $ref: "../requestBodies/UserRequestBody.yaml"
-  response:
+  responses:
     '200':
       description: Created new user successfully
     default:
