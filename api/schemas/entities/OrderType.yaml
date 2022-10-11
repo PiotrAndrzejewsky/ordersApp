@@ -1,0 +1,11 @@
+properties:
+  id:
+    type: number
+    min: 0
+
+  userId:
+    type: number
+    min: 0
+
+  name:
+    type: string
