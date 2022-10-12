@@ -23,25 +23,31 @@ components:
         $ref: "./requestBodies/index.yaml"
 
 paths:
-    /orders:
-        $ref: "./paths/orders.yaml"
-
-    /orders/{orderId}:
-        $ref: "./paths/order.yaml"
 
     /login:
-        $ref: "./paths/login.yaml"
+      $ref: "./paths/login/login.yaml"
 
     /signUp:
-        $ref: "./paths/signUp.yaml"
-
-    /orders/week/{userId}?date={date}:
-        $ref: "./paths/orders_date_week.yaml"
-
-    /orders/day/{userId}?date={date}:
-        $ref: "./paths/orders_date_day.yaml"
+        $ref: "./paths/login/signUp.yaml"
 
     /refresh:
-        $ref: "./paths/refresh_token.yaml"
+      $ref: "./paths/login/refresh_token.yaml"
 
+    /orders:
+        $ref: "./paths/orders/orders.yaml"
+
+    /orders/{orderId}:
+        $ref: "./paths/orders/order.yaml"
+
+    /orders/week/{userId}/{date}:
+        $ref: "./paths/orders/orders_date_week.yaml"
+
+    /orders/day/{userId}/{date}:
+        $ref: "./paths/orders/orders_date_day.yaml"
+
+    /orders/type/{userId}:
+        $ref: "./paths/orderTypes/ordersType.yaml"
+
+    /orders/type/{userId}/{orderTypeId}:
+        $ref: "./paths/orderTypes/orderType.yaml"
 
