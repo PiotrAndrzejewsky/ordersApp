@@ -7,6 +7,10 @@ properties:
         type: number
         min: 0
 
+    orderTypeId:
+        type: number
+        min: 0
+
     title:
         type: string
 
