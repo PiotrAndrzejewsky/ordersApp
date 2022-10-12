@@ -5,6 +5,9 @@ info:
     title: ordersApp
     description: App that enables you to work with your orders
 
+servers:
+  - url: http://localhost:8080
+
 tags:
     - name: Orders
     - name: Login
@@ -20,22 +23,31 @@ components:
         $ref: "./requestBodies/index.yaml"
 
 paths:
-    /orders:
-        $ref: "./paths/orders.yaml"
-
-    /orders/{orderId}:
-        $ref: "./paths/order.yaml"
 
     /login:
-        $ref: "./paths/login.yaml"
+      $ref: "./paths/login/login.yaml"
 
     /signUp:
-        $ref: "./paths/signUp.yaml"
+        $ref: "./paths/login/signUp.yaml"
 
-    /orders/week/{userId}?date={date}:
-        $ref: "./paths/orders_date_week.yaml"
+    /refresh:
+      $ref: "./paths/login/refresh_token.yaml"
 
-    /orders/day/{userId}?date={date}:
-        $ref: "./paths/orders_date_day.yaml"
+    /orders:
+        $ref: "./paths/orders/orders.yaml"
 
+    /orders/{orderId}:
+        $ref: "./paths/orders/order.yaml"
+
+    /orders/week/{userId}/{date}:
+        $ref: "./paths/orders/orders_date_week.yaml"
+
+    /orders/day/{userId}/{date}:
+        $ref: "./paths/orders/orders_date_day.yaml"
+
+    /orders/type/{userId}:
+        $ref: "./paths/orderTypes/ordersType.yaml"
+
+    /orders/type/{userId}/{orderTypeId}:
+        $ref: "./paths/orderTypes/orderType.yaml"
 

@@ -1,5 +1,3 @@
-summary: operations on orders by date
-
 parameters:
 
   - name: userId
@@ -19,14 +17,15 @@ parameters:
 
 
 get:
-  operationId: GetAllOrdersByDate
+  summary: operations on orders by date
+
   tags:
     - Orders
   description: Returns an array of orders planned on specific day
   responses:
     '200':
-      $ref: "../responses/OrderListResponse.yaml"
+      $ref: "../../responses/OrderListResponse.yaml"
 
     default:
-      $ref: "../responses/ApiErrorResponse.yaml"
+      $ref: "../../responses/ApiErrorResponse.yaml"
 

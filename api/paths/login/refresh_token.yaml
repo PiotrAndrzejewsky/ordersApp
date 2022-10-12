@@ -1,0 +1,30 @@
+get:
+
+  summary: refresh access token
+
+  parameters:
+    - in: header
+      name: authorization
+      description: refresh token
+      type: string
+      required: true
+
+  operationId: refreshToken
+
+  tags:
+    - Login
+
+  description: Refreshes token
+
+  responses:
+    '200':
+      description: Token was refresh successfully
+      headers:
+        Access-Token:
+          type: string
+          description: access token
+        Refresh-Token:
+          type: string
+          description: refresh token
+    default:
+      $ref: "../../responses/ApiErrorResponse.yaml"

@@ -7,6 +7,9 @@ Order:
 User:
     $ref: "./entities/User.yaml"
 
+OrderType:
+    $ref: "./entities/OrderType.yaml"
+
 
 
 OrderForm:
@@ -15,6 +18,8 @@ OrderForm:
 UserForm:
     $ref: "./forms/UserForm.yaml"
 
-
 OrderUpdateForm:
     $ref: "./forms/OrderUpdateForm.yaml"
+
+OrderTypeForm:
+    $ref: "./forms/OrderTypeForm.yaml"

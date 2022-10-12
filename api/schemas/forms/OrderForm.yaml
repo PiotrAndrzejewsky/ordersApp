@@ -1,5 +1,13 @@
 properties:
 
+    userId:
+        type: number
+        min: 0
+
+    orderTypeId:
+        type: number
+        min: 0
+
     title:
         type: string
 
@@ -24,6 +32,8 @@ properties:
         type: boolean
 
 required:
+    - userId
+    - orderTypeId
     - title
     - price
     - client
