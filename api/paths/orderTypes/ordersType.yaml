@@ -1,0 +1,32 @@
+parameters:
+    -   name: userId
+        in: path
+        schema:
+            type: number
+            min: 0
+        required: true
+
+post:
+    summary: Creates new order type
+
+    tags:
+        - OrderTypes
+    requestBody:
+        $ref: "../../requestBodies/OrderTypeRequestBody.yaml"
+    responses:
+        '200':
+            description: Created new order type successfully
+        default:
+            $ref: "../../responses/ApiErrorResponse.yaml"
+
+get:
+    summary: Retrieves all order types created by specific user
+
+    tags:
+        - OrderTypes
+
+    responses:
+        '200':
+            $ref: "../../responses/OrderTypeListResponse.yaml"
+        default:
+            $ref: "../../responses/ApiErrorResponse.yaml"
