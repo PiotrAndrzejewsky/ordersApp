@@ -1,14 +1,13 @@
-summary: sing up user
-
 post:
-  operationId: createNewUser
+  summary: sing up user
+
   tags:
     - Login
   description: Creates user
   requestBody:
-    $ref: "../requestBodies/UserRequestBody.yaml"
+    $ref: "../../requestBodies/UserRequestBody.yaml"
   responses:
     '200':
       description: Created new user successfully
     default:
-      $ref: "../responses/ApiErrorResponse.yaml"
+      $ref: "../../responses/ApiErrorResponse.yaml"

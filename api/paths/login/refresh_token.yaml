@@ -27,4 +27,4 @@ get:
           type: string
           description: refresh token
     default:
-      $ref: "../responses/ApiErrorResponse.yaml"
+      $ref: "../../responses/ApiErrorResponse.yaml"

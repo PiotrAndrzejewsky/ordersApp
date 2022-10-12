@@ -7,7 +7,7 @@ post:
   description: Logins user
 
   requestBody:
-    $ref: "../requestBodies/UserRequestBody.yaml"
+    $ref: "../../requestBodies/UserRequestBody.yaml"
 
   responses:
     '200':
@@ -19,7 +19,7 @@ post:
         Refresh-Token:
           type: string
           description: refresh token
-      $ref: "../responses/LoginResponse.yaml"
+      $ref: "../../responses/LoginResponse.yaml"
 
     default:
-      $ref: "../responses/ApiErrorResponse.yaml"
+      $ref: "../../responses/ApiErrorResponse.yaml"

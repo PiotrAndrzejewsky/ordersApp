@@ -24,37 +24,34 @@ delete:
         '200':
             description: Order deleted successfully
         default:
-            $ref: "../responses/ApiErrorResponse.yaml"
+            $ref: "../../responses/ApiErrorResponse.yaml"
 
 
 patch:
-
     summary: update an order
 
     tags:
         - Orders
-        -
     description: Update an order
 
     requestBody:
-        $ref: "../requestBodies/OrderUpdateRequestBody.yaml"
+        $ref: "../../requestBodies/OrderUpdateRequestBody.yaml"
 
     responses:
         '200':
             description: Order updated successfully
         default:
-            $ref: "../responses/ApiErrorResponse.yaml"
+            $ref: "../../responses/ApiErrorResponse.yaml"
 
 post:
     summary: Mark order as done
 
     tags:
         - Orders
-        -
     description: Mark order as completed
 
     responses:
         '200':
             description: Task marked as completed successfully
         default:
-            $ref: "../responses/ApiErrorResponse.yaml"
+            $ref: "../../responses/ApiErrorResponse.yaml"
