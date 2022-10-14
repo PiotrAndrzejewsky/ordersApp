@@ -1,0 +1,53 @@
+openapi: "3.0.3"
+
+info:
+    version: 0.1.0
+    title: ordersApp
+    description: App that enables you to work with your orders
+
+servers:
+  - url: http://localhost:8080
+
+tags:
+    - name: Orders
+    - name: Login
+
+components:
+    schemas:
+        $ref: "./schemas/index.yaml"
+
+    responses:
+        $ref: "./responses/index.yaml"
+
+    requestBodies:
+        $ref: "./requestBodies/index.yaml"
+
+paths:
+
+    /login:
+      $ref: "./paths/login/login.yaml"
+
+    /signUp:
+        $ref: "./paths/login/signUp.yaml"
+
+    /refresh:
+      $ref: "./paths/login/refresh_token.yaml"
+
+    /orders:
+        $ref: "./paths/orders/orders.yaml"
+
+    /orders/{orderId}:
+        $ref: "./paths/orders/order.yaml"
+
+    /orders/week/{userId}/{date}:
+        $ref: "./paths/orders/orders_date_week.yaml"
+
+    /orders/day/{userId}/{date}:
+        $ref: "./paths/orders/orders_date_day.yaml"
+
+    /orders/type/{userId}:
+        $ref: "./paths/orderTypes/ordersType.yaml"
+
+    /orders/type/{userId}/{orderTypeId}:
+        $ref: "./paths/orderTypes/orderType.yaml"
+

@@ -1,0 +1,25 @@
+post:
+  summary: login user
+
+  tags:
+    - Login
+
+  description: Logins user
+
+  requestBody:
+    $ref: "../../requestBodies/UserRequestBody.yaml"
+
+  responses:
+    '200':
+      description: Login successfully
+      headers:
+        Access-Token:
+          type: string
+          description: access token
+        Refresh-Token:
+          type: string
+          description: refresh token
+      $ref: "../../responses/LoginResponse.yaml"
+
+    default:
+      $ref: "../../responses/ApiErrorResponse.yaml"

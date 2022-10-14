@@ -1,0 +1,31 @@
+parameters:
+
+  - name: userId
+    in: path
+    required: true
+    schema:
+      type: number
+      min: 0
+
+  - name: date
+    in: path
+    required: true
+    schema:
+      type: string
+      format: date
+      example: "2022-06-19"
+
+
+get:
+  summary: operations on orders by date
+
+  tags:
+    - Orders
+  description: Returns an array of orders planned on specific day
+  responses:
+    '200':
+      $ref: "../../responses/OrderListResponse.yaml"
+
+    default:
+      $ref: "../../responses/ApiErrorResponse.yaml"
+

@@ -1,0 +1,41 @@
+properties:
+
+    userId:
+        type: number
+        min: 0
+
+    orderTypeId:
+        type: number
+        min: 0
+
+    title:
+        type: string
+
+    description:
+        type: string
+
+    price:
+        type: number
+        min: 0
+
+    client:
+        type: string
+
+    plannedCompletionDate:
+        type: date
+
+    quantity:
+        type: number
+        min: 1
+
+    completed:
+        type: boolean
+
+required:
+    - userId
+    - orderTypeId
+    - title
+    - price
+    - client
+    - plannedCompletionDate
+    - quantity

@@ -1,0 +1,8 @@
+OrderRequestBody:
+    $ref: "./OrderRequestBody.yaml"
+
+OrderUpdateRequestBody:
+    $ref: "./OrderUpdateRequestBody.yaml"
+
+UserRequestBody:
+    $ref: "./UserRequestBody.yaml"
