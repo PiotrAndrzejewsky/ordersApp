@@ -19,4 +19,5 @@ public class LoginViewModel {
     public void setPassword(String password) {
         this.mPassword = password;
     }
+
 }

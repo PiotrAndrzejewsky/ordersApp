@@ -1,35 +1,12 @@
 package com.example.ordersApp.user;
 
-import com.example.ordersApp.exceptions.UserDoesNotExistException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-@Service
-public class UserService {
 
-    @Autowired
-    private UserRepository mUserRepository;
+public interface UserService {
 
-    public UserService(UserRepository userRepository) { this.mUserRepository = userRepository; }
+    boolean saveUser(UserEntity userEntity);
+    void refreshToken (HttpServletRequest request, HttpServletResponse response);
 
-    public UserEntity getById(Long id) {
-        return mUserRepository
-                .findById(id)
-                .orElseThrow(() -> new UserDoesNotExistException(id));
-    }
-
-    public boolean isUsernameTaken(String username) { return mUserRepository.findByUsername(username) != null; }
-
-    public boolean signUpUsername(UserEntity userEntity) {
-        if (!isUsernameTaken(userEntity.getUsername())) { addNewUser(userEntity); return true; }
-
-        return false;
-    }
-
-    public void addNewUser(UserEntity userEntity) {
-        String password = new BCryptPasswordEncoder().encode(userEntity.getPassword());
-        userEntity.setPassword(password);
-        mUserRepository.save(userEntity); }
 }

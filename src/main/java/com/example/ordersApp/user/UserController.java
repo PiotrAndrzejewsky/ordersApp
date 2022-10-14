@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     @Autowired
-    private UserService mUserService;
+    private UserServiceImpl mUserService;
 
     @PostMapping("/signUp")
     public boolean signUpUsername(@RequestBody UserEntity userEntity) {
-        return mUserService.signUpUsername(userEntity);
+        return mUserService.saveUser(userEntity);
     }
 }
