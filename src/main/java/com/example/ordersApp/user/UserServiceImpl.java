@@ -1,29 +1,35 @@
 package com.example.ordersApp.user;
 
 import com.auth0.jwt.JWT;
-import com.auth0.jwt.JWTVerifier;
-import com.auth0.jwt.interfaces.DecodedJWT;
+import com.auth0.jwt.algorithms.Algorithm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import static com.example.ordersApp.security.CustomAuthenticationFilter.*;
-import static org.springframework.http.HttpHeaders.AUTHORIZATION;
+import java.util.Date;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository mUserRepository;
+    @Autowired
     private PasswordEncoder mPasswordEncoder;
+
+    @Value("${app.secret-token}")
+    private String secret = "";
+
+    @Value("${app.token-time}")
+    private int time;
 
     @Override
     public boolean saveUser(UserEntity userEntity) {
-        if (!mUserRepository.findByUsername(userEntity.getUsername()).isPresent()) {
+        if (mUserRepository.findByUsername(userEntity.getUsername()).isEmpty()) {
             userEntity.setPassword(mPasswordEncoder.encode(userEntity.getPassword()));
             mUserRepository.save(userEntity);
             return true;
@@ -32,20 +38,25 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void refreshToken(HttpServletRequest request, HttpServletResponse response) {
-        String authorizationHeader = request.getHeader(AUTHORIZATION);
-        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
-            String token = authorizationHeader.substring("Bearer ".length());
-            JWTVerifier jwtVerifier = JWT.require(ALGORITHM).build();
-            DecodedJWT decodedJWT = jwtVerifier.verify(token);
-            String username = decodedJWT.getSubject();
-            String accessToken = createToken(username, EXPIRATION_DATE, request.getRequestURL().toString());
-            String refreshToken = createToken(username, EXPIRATION_DATE * 5, request.getRequestURL().toString());
-            response.setHeader("Access-Token", accessToken);
-            response.setHeader("Refresh-Token", refreshToken);
+    public HttpStatus login(UserEntity userEntity, HttpServletResponse httpServletResponse) {
+        if (mUserRepository.findByUsername(userEntity.getUsername()).isPresent()) {
+            UserEntity user = mUserRepository.findByUsername(userEntity.getUsername()).get();
+            if (mPasswordEncoder.matches(userEntity.getPassword(), user.getPassword())) {
+                String access_token = createToken(user.getUsername());
+                String refresh_token = createToken(user.getUsername());
+                httpServletResponse.setHeader(HttpHeaders.AUTHORIZATION, access_token);
+                httpServletResponse.setHeader("Refresh-Token", refresh_token);
+                return HttpStatus.OK;
+            }
         }
-        else {
-            throw new RuntimeException("refresh token is missing");
-        }
+        return HttpStatus.FORBIDDEN;
+    }
+
+    public String createToken(String subject) {
+        Algorithm ALGORITHM = Algorithm.HMAC256(secret);
+        return JWT.create()
+                .withSubject(subject)
+                .withExpiresAt(new Date(System.currentTimeMillis() + time))
+                .sign(ALGORITHM);
     }
 }
