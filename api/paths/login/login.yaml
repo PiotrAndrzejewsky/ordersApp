@@ -13,11 +13,13 @@ post:
     '200':
       description: Login successfully
       headers:
-        Access-Token:
-          type: string
+        Authorization:
+          schema:
+            type: string
           description: access token
-        Refresh-Token:
-          type: string
+        X-Refresh-Token:
+          schema:
+            type: string
           description: refresh token
       $ref: "../../responses/LoginResponse.yaml"
 

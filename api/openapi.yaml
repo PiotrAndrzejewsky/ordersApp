@@ -24,10 +24,10 @@ components:
 
 paths:
 
-    /login:
+    /user/login:
       $ref: "./paths/login/login.yaml"
 
-    /signUp:
+    /user/save:
         $ref: "./paths/login/signUp.yaml"
 
     /refresh:
