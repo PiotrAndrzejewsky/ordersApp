@@ -42,8 +42,8 @@ public class UserServiceImpl implements UserService {
         if (mUserRepository.findByUsername(userEntity.getUsername()).isPresent()) {
             UserEntity user = mUserRepository.findByUsername(userEntity.getUsername()).get();
             if (mPasswordEncoder.matches(userEntity.getPassword(), user.getPassword())) {
-                String access_token = createToken(user.getUsername());
-                String refresh_token = createToken(user.getUsername());
+                String access_token = createToken(user.getUsername(), user.getUserId());
+                String refresh_token = createToken(user.getUsername(), user.getUserId());
                 httpServletResponse.setHeader(HttpHeaders.AUTHORIZATION, access_token);
                 httpServletResponse.setHeader("Refresh-Token", refresh_token);
                 return HttpStatus.OK;
@@ -52,11 +52,12 @@ public class UserServiceImpl implements UserService {
         return HttpStatus.FORBIDDEN;
     }
 
-    public String createToken(String subject) {
+    public String createToken(String subject, Long id) {
         Algorithm ALGORITHM = Algorithm.HMAC256(secret);
         return JWT.create()
                 .withSubject(subject)
                 .withExpiresAt(new Date(System.currentTimeMillis() + time))
+                .withIssuer(id.toString())
                 .sign(ALGORITHM);
     }
 }
