@@ -9,6 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 public interface UserService {
 
     boolean saveUser(UserEntity userEntity);
-    HttpStatus login(UserEntity userEntity, HttpServletResponse httpServletResponse);
+    Long login(UserEntity userEntity, HttpServletResponse httpServletResponse);
 
 }

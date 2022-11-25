@@ -20,8 +20,8 @@ public class AuthHandlerInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-
         if (!request.getRequestURI().equals("/user/login") && !request.getRequestURI().equals("/user/save") && !request.getRequestURI().equals("/error")) {
+            System.out.println(request.getHeader(HttpHeaders.AUTHORIZATION));
             decodeToken(request, secret);
         }
         return HandlerInterceptor.super.preHandle(request, response, handler);
