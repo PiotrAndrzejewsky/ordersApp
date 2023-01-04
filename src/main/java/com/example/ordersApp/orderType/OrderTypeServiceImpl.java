@@ -1,18 +1,22 @@
 package com.example.ordersApp.orderType;
 
-import com.example.ordersApp.exceptions.OrderTypeNotFound;
-import com.example.ordersApp.security.AuthHandlerInterceptor;
+import com.example.ordersApp.order.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class OrderTypeServiceImpl implements OrderTypeService {
 
     @Autowired
     private OrderTypeRepository mOrderTypeRepository;
+
+    @Autowired
+    private OrderRepository mOrderRepository;
 
     @Override
     public boolean createNewOrderType(OrderTypeEntity orderType) {
@@ -51,6 +55,7 @@ public class OrderTypeServiceImpl implements OrderTypeService {
             if (!orderType.getUserId().equals(userId)) {
                 throw new IllegalArgumentException();
             }
+            mOrderRepository.deleteAllByOrderTypeId(orderTypeId, userId);
             mOrderTypeRepository.deleteById(orderTypeId);
         }
         catch (IllegalArgumentException | EmptyResultDataAccessException e) {

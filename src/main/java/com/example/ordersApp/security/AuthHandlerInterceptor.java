@@ -3,6 +3,7 @@ package com.example.ordersApp.security;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
@@ -11,7 +12,6 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Objects;
 
 @Component
 public class AuthHandlerInterceptor implements HandlerInterceptor {
@@ -21,8 +21,13 @@ public class AuthHandlerInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         if (!request.getRequestURI().equals("/user/login") && !request.getRequestURI().equals("/user/save") && !request.getRequestURI().equals("/error")) {
-            System.out.println(request.getHeader(HttpHeaders.AUTHORIZATION));
-            decodeToken(request, secret);
+            try {
+                decodeToken(request, secret);
+            }
+            catch (TokenExpiredException e) {
+                response.setStatus(498);
+                return false;
+            }
         }
         return HandlerInterceptor.super.preHandle(request, response, handler);
     }

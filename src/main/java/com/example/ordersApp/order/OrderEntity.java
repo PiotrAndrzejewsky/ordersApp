@@ -19,7 +19,7 @@ public class OrderEntity {
     private Long mOrderTypeId;
 
     @Column(name = "price")
-    private int mPrice;
+    private double mPrice;
 
     @Column(name = "title")
     private String mTitle;
@@ -39,7 +39,7 @@ public class OrderEntity {
     @Column(name = "completed")
     private boolean mCompleted;
 
-    public OrderEntity(Long userId, Long orderTypeId, int price, String title, String client, LocalDateTime plannedCompletionDate) {
+    public OrderEntity(Long userId, Long orderTypeId, double price, String title, String client, LocalDateTime plannedCompletionDate) {
         mUserId = userId;
         mOrderTypeId = orderTypeId;
         mPrice = price;
@@ -75,11 +75,11 @@ public class OrderEntity {
         mOrderTypeId = orderTypeId;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return mPrice;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         mPrice = price;
     }
 

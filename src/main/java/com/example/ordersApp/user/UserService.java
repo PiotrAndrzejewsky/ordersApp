@@ -1,8 +1,5 @@
 package com.example.ordersApp.user;
 
-import org.springframework.http.HttpStatus;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 

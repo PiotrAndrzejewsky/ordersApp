@@ -59,13 +59,13 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public void updateOrder(OrderEntity orderEntity, Long orderId) {
         OrderEntity order = mOrderRepository.findById(orderId).orElseThrow(() -> new OrderNotFound(orderId));
-        if (orderEntity.getOrderTypeId() != null) order.setOrderTypeId(orderEntity.getOrderTypeId());
-        if (!orderEntity.getTitle().isEmpty()) order.setTitle(orderEntity.getTitle());
-        if (!orderEntity.getDescription().isEmpty()) order.setDescription(orderEntity.getDescription());
-        if (orderEntity.getPrice() != 0) order.setPrice(orderEntity.getPrice());
-        if (!orderEntity.getClient().isEmpty()) order.setClient(orderEntity.getClient());
-        if (orderEntity.getQuantity() != 0) order.setQuantity(orderEntity.getQuantity());
-        if (orderEntity.getPlannedCompletionDate() != null) order.setPlannedCompletionDate(orderEntity.getPlannedCompletionDate());
+        order.setOrderTypeId(orderEntity.getOrderTypeId());
+        order.setTitle(orderEntity.getTitle());
+        order.setDescription(orderEntity.getDescription());
+        order.setPrice(orderEntity.getPrice());
+        order.setClient(orderEntity.getClient());
+        order.setQuantity(orderEntity.getQuantity());
+        order.setPlannedCompletionDate(orderEntity.getPlannedCompletionDate());
     }
 
     @Override
