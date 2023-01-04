@@ -1,3 +1,10 @@
+parameters:
+    - name: authorization
+      in: header
+      description: access token
+      type: string
+      required: true
+
 post:
     summary: Operations on orders
 

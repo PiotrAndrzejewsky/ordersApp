@@ -1,14 +1,11 @@
 package com.example.ordersApp.user;
 
-import org.springframework.http.HttpStatus;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
 public interface UserService {
 
     boolean saveUser(UserEntity userEntity);
-    HttpStatus login(UserEntity userEntity, HttpServletResponse httpServletResponse);
+    Long login(UserEntity userEntity, HttpServletResponse httpServletResponse);
 
 }

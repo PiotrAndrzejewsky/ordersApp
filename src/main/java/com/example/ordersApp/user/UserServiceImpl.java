@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletResponse;
+import java.net.http.HttpResponse;
 import java.util.Date;
 
 @Service
@@ -38,25 +39,26 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public HttpStatus login(UserEntity userEntity, HttpServletResponse httpServletResponse) {
+    public Long login(UserEntity userEntity, HttpServletResponse httpServletResponse) {
         if (mUserRepository.findByUsername(userEntity.getUsername()).isPresent()) {
             UserEntity user = mUserRepository.findByUsername(userEntity.getUsername()).get();
             if (mPasswordEncoder.matches(userEntity.getPassword(), user.getPassword())) {
-                String access_token = createToken(user.getUsername());
-                String refresh_token = createToken(user.getUsername());
+                String access_token = createToken(user.getUsername(), user.getUserId());
+                String refresh_token = createToken(user.getUsername(), user.getUserId());
                 httpServletResponse.setHeader(HttpHeaders.AUTHORIZATION, access_token);
                 httpServletResponse.setHeader("Refresh-Token", refresh_token);
-                return HttpStatus.OK;
+                return user.getUserId();
             }
         }
-        return HttpStatus.FORBIDDEN;
+        return 0L;
     }
 
-    public String createToken(String subject) {
+    public String createToken(String subject, Long id) {
         Algorithm ALGORITHM = Algorithm.HMAC256(secret);
         return JWT.create()
                 .withSubject(subject)
                 .withExpiresAt(new Date(System.currentTimeMillis() + time))
+                .withIssuer(id.toString())
                 .sign(ALGORITHM);
     }
 }
