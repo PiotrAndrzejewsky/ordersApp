@@ -1,0 +1,12 @@
+properties:
+
+  userId:
+    type: number
+    min: 0
+
+  name:
+    type: string
+
+required:
+  - userID
+  - name

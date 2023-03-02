@@ -1,0 +1,5 @@
+description: contains an user
+content:
+    application/json:
+        schema:
+            $ref: "../schemas/entities/User.yaml"

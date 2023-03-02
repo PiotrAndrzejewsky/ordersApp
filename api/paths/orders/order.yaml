@@ -1,0 +1,57 @@
+parameters:
+  - name: orderId
+    in: path
+    schema:
+      type: number
+      min: 0
+    required: true
+
+  - name: authorization
+    in: header
+    description: access token
+    type: string
+    required: true
+
+delete:
+    summary: delete an order
+
+    tags:
+        - Orders
+
+    description: Deletes an order with specific id or an error where there isn't any order with that id
+
+    responses:
+        '200':
+            description: Order deleted successfully
+        default:
+            $ref: "../../responses/ApiErrorResponse.yaml"
+
+
+patch:
+    summary: update an order
+
+    tags:
+        - Orders
+    description: Update an order
+
+    requestBody:
+        $ref: "../../requestBodies/OrderUpdateRequestBody.yaml"
+
+    responses:
+        '200':
+            description: Order updated successfully
+        default:
+            $ref: "../../responses/ApiErrorResponse.yaml"
+
+post:
+    summary: Mark order as done
+
+    tags:
+        - Orders
+    description: Mark order as completed
+
+    responses:
+        '200':
+            description: Task marked as completed successfully
+        default:
+            $ref: "../../responses/ApiErrorResponse.yaml"

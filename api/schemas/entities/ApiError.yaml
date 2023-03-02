@@ -1,0 +1,10 @@
+properties:
+
+    message:
+        type: string
+
+    suggestedAction:
+        type: string
+
+    status:
+        type: number

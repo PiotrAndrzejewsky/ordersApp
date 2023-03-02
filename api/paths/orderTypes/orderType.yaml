@@ -1,0 +1,39 @@
+parameters:
+
+  -   name: orderTypeId
+      in: path
+      schema:
+        type: number
+        min: 0
+      required: true
+
+  -   name: userId
+      in: path
+      schema:
+        type: number
+        min: 0
+      required: true
+
+get:
+  summary: Retrieves an order type
+
+  tags:
+    - OrderTypes
+
+  responses:
+    '200':
+      $ref: "../../responses/OrderType.yaml"
+    default:
+      $ref: "../../responses/ApiErrorResponse.yaml"
+
+delete:
+  summary: deletes an order type
+
+  tags:
+    - OrderTypes
+
+  responses:
+    '200':
+      description: Order type was successfully deleted
+    default:
+      $ref: "../../responses/ApiErrorResponse.yaml"
